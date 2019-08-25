@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+    </head>
+    <body>
+        <button onclick=playonegame()>play a game</button>
+        <button onclick=userplay()>Userplay</button>
+        
+    <script>
+
+    function Computerplay(){
+        let chooseinnumber=Math.floor(Math.random() * (4 - 1) ) + 1;
+        let response=""
+        if (chooseinnumber==1){
+            response="rock"
+        }
+        if (chooseinnumber==2){
+            response="paper"
+        }
+        if (chooseinnumber==3){
+            response="scissors"
+        }
+        console.log(response)
+        return response
+    }
+    function userplay(){
+        userchoose=prompt("Hello dear user please , type one of those , Rock Paper or Scissors")
+        usrregularized=userchoose.toLowerCase()
+        if(usrregularized=="rock"){
+            console.log(usrregularized)
+            return usrregularized
+            
+
+        }
+        if(usrregularized=="paper"){
+            console.log(usrregularized)
+            return usrregularized
+
+        }
+        if(usrregularized=="scissors"){
+            console.log(usrregularized)
+            return usrregularized
+
+        }else{
+            alert("please remember rock , paper or scissors , else it doesn't count")
+            userplay()
+        }
+        
+    }
+    function game(user,cpu){
+        let response=""
+        if (user==cpu){
+            response="c"
+            return response
+        }
+        if (user=="rock"&&cpu=="paper"){
+            response="a"
+            return response
+        }
+        if (user=="rock"&&cpu=="scissors"){
+            response="b"
+            return response
+        }
+        if (user=="paper"&&cpu=="scissors"){
+            response="a"
+            return response
+        }
+        if (user=="paper"&&cpu=="rock"){
+            response="b"
+            return response
+                    }
+        if (user=="scissors"&&cpu=="rock"){
+            response="a"
+            return response
+        }
+        if (user=="scissors"&&cpu=="paper"){
+            response="b"
+            return response
+        }
+        
+        
+    }
+    function playonegame(){
+        let userchose=userplay()
+        let cpuchoose=Computerplay()
+        let cpuscore=0
+        let playerscore=0
+        let totalgames=0
+        let cpuactscore=0
+        let response=""
+        let scorelet=""
+        
+        while(totalgames<5 ){
+            scorelet=game(userchose,cpuchoose);
+            if (scorelet=="a"){
+                cpuscore++
+                totalgames++
+                console.log(cpuscore)
+                
+            }
+            if (scorelet=="b"){
+                playerscore++
+                totalgames++
+                console.log(playerscore)
+                
+            }
+            if (scorelet=="c"){  
+                console.log(playerscore)
+                playerscore++
+                totalgames++
+                
+            }
+        }
+        if(playerscore<cpuscore){
+            alert(" Cpu Wins!")
+        }
+        if(playerscore>cpuscore){
+            alert(" You Win!")
+        }
+
+
+    }
+    </script>
+    </body>
+    
+</html>
+    
