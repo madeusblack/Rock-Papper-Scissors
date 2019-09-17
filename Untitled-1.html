@@ -4,10 +4,39 @@
         <title>Rock Paper Scissors</title>
     </head>
     <body>
-        <button onclick=playonegame()>play a rock , paper , scissors match</button>
+        <p id="totalgam">The total of played games is: 0</p> 
+        <p id="scoreboard">the scoreboard now is:<br> Player(you): 0<br> Cpu(me): 0</p>
+        <button id="startbut"onclick=startgame()>Start Game</button>
+        <div id="gamebuts"></div>
+        <p id="message">Hello my friend click an image for a round</p>
+        
+       
+ 
+    
     <script>
-    let cpuscore=0
+         document.getElementById("startbut").style.borderColor= "red";
+        document.getElementById("startbut").style.background= "red"; 
+        document.getElementById("startbut").width="46%"; 
+        document.getElementById("startbut").style.height="55px";
+        document.getElementById("startbut").style.borderRadius="200px";
+        document.getElementById("startbut").style.marginLeft="553px";
+        document.getElementById("scoreboard").style.fontSize= "18px";
+        document.getElementById("scoreboard").style.border= "1px dotted black"; 
+        document.getElementById("scoreboard").style.width= "200px";        
+        document.getElementById("message").style.fontSize= "28px";
+        document.getElementById("message").style.border= "1px dotted black"; 
+        document.getElementById("totalgam").style.fontSize= "18px";
+        document.getElementById("totalgam").style.border= "1px dotted black";  
+        document.getElementById("totalgam").style.cssFloat= "right";
+        document.body.style.backgroundImage="url('fondo.png')";
+
+
+    
+        
+    let cpuscore=0 
     let playerscore=0
+    let totalgames=0
+
     
     let options=["rock","paper","scissors"]
     function Computerplay(){//this function returns a random answer based on the "options" variable  
@@ -15,86 +44,104 @@
         let resp=options[response]
         return resp
     }
-    function userplay(){//this function ask the user for input and also forces the correct 
+
+    function userplay(userinput){//this function ask the user for input and also forces the correct 
                         //input by starting itself when an invalid input is given and 
                         //also returns the input regularized so it´s case insensitive
-        userchoose=prompt("Hello dear user please , type one of those , Rock Paper or Scissors")
-        usrregularized=userchoose.toLowerCase()
-        if(usrregularized=="rock"){
-            return usrregularized
-        }
-        if(usrregularized=="paper"){
-            return usrregularized
-        }
-        if(usrregularized=="scissors"){
-            return usrregularized
-        }else{
-            alert("please remember rock , paper or scissors , else it doesn't count")
-            userplay()
+
+
+        alert("play")
+        if(userinput="rock"){
+            playonegame(userplay)
+            }
+        if(userinput=="paper"){
+            playonegame(userplay)}
+        if(userinput=="scissors"){
+            playonegame(userplay)
         }
     }
     function game(user,cpu){//this function ask for two variables the first one is for the user input 
                             //and the second one is for the cpu input and compares to determine the 
                             //result of the round it also shows the actual scoreboard based on the 
                             //cpuscore and playerscore variables
+        totalgames++
 
+        document.getElementById("totalgam").innerHTML="The total of played games is: "+totalgames
         if (user==cpu){
-            alert("It´s a TIE")
-            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
+
+            document.getElementById("message").innerHTML= "It´s a TIE"
+            document.getElementById("scoreboard").innerHTML= 
+            "the scoreboard now is<br> Player(you): "+playerscore+"<br> Cpu(me): "+cpuscore;
             return 
         }
         if (user=="rock"&&cpu=="paper"){
             response="a"
             cpuscore++
-            alert("cpu choose "+cpu + " , player choose " + user +" it's super efective ")
-            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
+            document.getElementById("scoreboard").innerHTML= 
+            "the scoreboard now is<br> Player(you): "+playerscore+"<br> Cpu(me): "+cpuscore;
+            document.getElementById("message").innerHTML= "cpu choose "+cpu + " , player choose " + user +" it's super efective "
             return 
         }
         if (user=="rock"&&cpu=="scissors"){
             playerscore++
-            alert("you choose "+user + " and it beats " + cpu +
-            " chosen by the cpu so, you win this round")
-            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
+            document.getElementById("scoreboard").innerHTML= 
+            "the scoreboard now is<br> Player(you): "+playerscore+"<br> Cpu(me): "+cpuscore;
+            document.getElementById("message").innerHTML=
+            "you choose "+user + " and it beats " + cpu +
+            " chosen by the cpu so, you win this round"
             return 
         }
         if (user=="paper"&&cpu=="scissors"){
             cpuscore++
-            alert("i cutted your pittiful "+user+" with my neuronal " + cpu +
-            " you lose this round,and probalby a lot if time reading this")
-            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
+            document.getElementById("message").innerHTML="i cutted your pittiful "+user+" with my neuronal " + cpu +
+            " you lose this round,and probalby a lot if time reading this"
+            document.getElementById("scoreboard").innerHTML= 
+            "the scoreboard now is<br> Player(you): "+playerscore+"<br> Cpu(me): "+cpuscore;
             return 
         }
         if (user=="paper"&&cpu=="rock"){
             playerscore++
-            alert("wow you used the "+user + " wich in a magnificent move enrolled my " + cpu +
-            " you win this round, but only this one")
-            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
-            return 
-                    }
+            document.getElementById("scoreboard").innerHTML= 
+            "the scoreboard now is<br> Player(you): "+playerscore+"<br> Cpu(me): "+cpuscore;
+            document.getElementById("message").innerHTML=
+            "wow you used the "+user + " wich in a magnificent move enrolled my " + cpu +
+            " you win this round, but only this one"
+            return
+        }
         if (user=="scissors"&&cpu=="rock"){
-            alert("don't try to use a "+user+" with my solid " + cpu +
-            " you lose this round,and probalby a lot if time reading this")
+            document.getElementById("message").innerHTML=
+            "don't try to use a "+user+" with my solid " + cpu +
+            " you lose this round,and probalby a lot if time reading this"
             cpuscore++
-            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
+            document.getElementById("scoreboard").innerHTML= 
+            "the scoreboard now is<br> Player(you): "+playerscore+"<br> Cpu(me): "+cpuscore;
             return 
         }
         if (user=="scissors"&&cpu=="paper"){
             playerscore++
-            alert("so , "+user + " huh? well it cuts my " + cpu +" so, you win this round")
-            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
-            return 
+            document.getElementById("message").innerHTML=
+            "so , "+user + " huh? well it cuts my " + cpu +" so, you win this round"
+            document.getElementById("scoreboard").innerHTML= 
+            "the scoreboard now is<br> Player(you): "+playerscore+"<br> Cpu(me): "+cpuscore;
+            return
         }
     }
-    function playonegame(){//this function calls the game function using the userplay 
+    function playonegame(userplay){//this function calls the game function using the userplay 
                            //and computerplay functions as arguments and it repeat 
                            //the process based on the games variable wich is declared on
                            //the for loop , it also resets the cpuscore and playerscore
                            //variables to 0 and at the end of the loop it displays the winner 
                            //or al message for a tied game
+        
         cpuscore=0
-        playerscore=0 
-        for(games=0; games < 5; games++){
-            game(userplay(),Computerplay())
+        playerscore=0
+     
+
+
+        
+            game(userplay,Computerplay())
+        
+    
         }
         if(playerscore<cpuscore){
             alert(" Cpu Wins!")
@@ -102,9 +149,35 @@
         if(playerscore>cpuscore){
             alert(" You Win!")
         }
-        if (playerscore==cpuscore){
-            alert("A Tied game , are you connected to machines or something?")
-        }
+
+    
+    function startgame(){
+
+        let rock=document.createElement("BUTTON")
+        rock.addEventListener("click", function(){game("rock",Computerplay())});
+        rock.style.marginLeft="65px"
+        rock.style.border="10px solid black"
+        rock.style.width="26%";
+        rock.style.height="355px";
+        rock.style.borderRadius="200px";
+        rock.style.backgroundImage="url('rock.png')";
+        document.getElementById("gamebuts").appendChild(rock)
+        let paper=document.createElement("BUTTON")
+        paper.addEventListener("click", function(){game("paper",Computerplay())});
+        paper.style.border="10px solid yellow"
+        paper.style.width="26%";
+        paper.style.height="355px";
+        paper.style.borderRadius="200px";
+        paper.style.backgroundImage="url('paper.png')";
+        document.getElementById("gamebuts").appendChild(paper)
+        let scissors=document.createElement("BUTTON")
+        scissors.addEventListener("click", function(){game("scissors",Computerplay())});
+        scissors.style.border="10px solid green"
+        scissors.style.width="26%";
+        scissors.style.height="355px";
+        scissors.style.borderRadius="200px";
+        scissors.style.backgroundImage="url('scissors.jpg')";
+        document.getElementById("gamebuts").appendChild(scissors)
     }
     </script>
     </body>

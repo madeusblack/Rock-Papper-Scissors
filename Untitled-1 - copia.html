@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+    </head>
+    <body>
+        <button onclick=playonegame()>play a rock , paper , scissors match</button>
+    <script>
+    let cpuscore=0
+    let playerscore=0
+    
+    let options=["rock","paper","scissors"]
+    function Computerplay(){//this function returns a random answer based on the "options" variable  
+        let response=Math.floor(Math.random() * options.length );
+        let resp=options[response]
+        return resp
+    }
+    function userplay(userchoose){//this function ask the user for input and also forces the correct 
+                        //input by starting itself when an invalid input is given and 
+                        //also returns the input regularized so it´s case insensitive
+        userchoose
+        if(usrregularized=="rock"){
+            return usrregularized
+        }
+        if(usrregularized=="paper"){
+            return usrregularized
+        }
+        if(usrregularized=="scissors"){
+            return usrregularized
+        }
+    }
+    function game(user,cpu){//this function ask for two variables the first one is for the user input 
+                            //and the second one is for the cpu input and compares to determine the 
+                            //result of the round it also shows the actual scoreboard based on the 
+                            //cpuscore and playerscore variables
+
+        if (user==cpu){
+            alert("It´s a TIE")
+            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
+            return 
+        }
+        if (user=="rock"&&cpu=="paper"){
+            response="a"
+            cpuscore++
+            alert("cpu choose "+cpu + " , player choose " + user +" it's super efective ")
+            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
+            return 
+        }
+        if (user=="rock"&&cpu=="scissors"){
+            playerscore++
+            alert("you choose "+user + " and it beats " + cpu +
+            " chosen by the cpu so, you win this round")
+            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
+            return 
+        }
+        if (user=="paper"&&cpu=="scissors"){
+            cpuscore++
+            alert("i cutted your pittiful "+user+" with my neuronal " + cpu +
+            " you lose this round,and probalby a lot if time reading this")
+            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
+            return 
+        }
+        if (user=="paper"&&cpu=="rock"){
+            playerscore++
+            alert("wow you used the "+user + " wich in a magnificent move enrolled my " + cpu +
+            " you win this round, but only this one")
+            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
+            return 
+                    }
+        if (user=="scissors"&&cpu=="rock"){
+            alert("don't try to use a "+user+" with my solid " + cpu +
+            " you lose this round,and probalby a lot if time reading this")
+            cpuscore++
+            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
+            return 
+        }
+        if (user=="scissors"&&cpu=="paper"){
+            playerscore++
+            alert("so , "+user + " huh? well it cuts my " + cpu +" so, you win this round")
+            alert("the scoreboard now is\n Player(you): "+playerscore+"\n Cpu(me): "+cpuscore)
+            return 
+        }
+    }
+    function playonegame(){//this function calls the game function using the userplay 
+                           //and computerplay functions as arguments and it repeat 
+                           //the process based on the games variable wich is declared on
+                           //the for loop , it also resets the cpuscore and playerscore
+                           //variables to 0 and at the end of the loop it displays the winner 
+                           //or al message for a tied game
+        cpuscore=0
+        playerscore=0 
+        for(games=0; games < 5; games++){
+            game(userplay(),Computerplay())
+        }
+        if(playerscore<cpuscore){
+            alert(" Cpu Wins!")
+        }
+        if(playerscore>cpuscore){
+            alert(" You Win!")
+        }
+        if (playerscore==cpuscore){
+            alert("A Tied game , are you connected to machines or something?")
+        }
+    }
+    </script>
+    </body>
+    
+</html>
+    
